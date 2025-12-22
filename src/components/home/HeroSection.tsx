@@ -16,8 +16,8 @@ export function HeroSection() {
     <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/95 to-emerald-800 py-20 lg:py-32">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-400 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        <div className="absolute top-0 left-0 w-96 h-75 bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-75 bg-emerald-400 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
 
       <div className="container relative">
@@ -33,7 +33,7 @@ export function HeroSection() {
               <span className="block text-amber-400">Mayor, Indore</span>
             </h1>
 
-            <p className="text-lg text-white/80 max-w-xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <p className="text-lg text-white/80 max-w-xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.45s" }}>
               Join India's most prestigious civic internship program. Gain hands-on experience in city governance, work alongside top officials, and contribute to transforming Indore.
             </p>
 

@@ -41,7 +41,7 @@ export function DepartmentsSection() {
             </div>
           ))}
           <div className="p-4 rounded-xl bg-primary text-primary-foreground flex items-center justify-center font-medium">
-            Explore in Detail
+            Upcoming..
           </div>
         </div>
       </div>
