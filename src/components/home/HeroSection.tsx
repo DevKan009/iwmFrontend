@@ -8,7 +8,7 @@ import CountUp from "@/components/ui/countup";
 const stats = [
   { label: "Interns Trained", value: "2,500+", icon: Users, end: 2500, suffix: "+" },
   { label: "Departments", value: "9", icon: Building2, end: 9, suffix: "" },
-  { label: "Batches", value: "15+", icon: Calendar, end: 15, suffix: "+" },
+  { label: "Batches", value: "8+", icon: Calendar, end: 8, suffix: "+" },
 ];
 
 export function HeroSection() {
