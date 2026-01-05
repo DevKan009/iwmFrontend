@@ -71,7 +71,7 @@ const Eligibility = () => {
       </section>
 
       {/* Eligibility Checker */}
-       <section className="py-16 bg-background">
+       <section className="py-16 bg-background ">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>

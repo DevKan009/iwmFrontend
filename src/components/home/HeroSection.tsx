@@ -29,7 +29,7 @@ export function HeroSection() {
           <div className="space-y-6 text-center lg:text-left lg:order-2">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/90 text-sm backdrop-blur-sm animate-fade-in">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Applications Open for Batch 16
+              Applications Open for Batch 8
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>

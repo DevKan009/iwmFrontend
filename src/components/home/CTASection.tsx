@@ -5,7 +5,7 @@ import { ArrowRight, Calendar, Clock, FileCheck } from "lucide-react";
 const timeline = [
   { step: 1, title: "Register Online", description: "Complete the application form with your details", icon: FileCheck },
   { step: 2, title: "Selection Process", description: "Review and shortlisting by IWM committee", icon: Clock },
-  { step: 3, title: "Department Assignment", description: "Get assigned to one of 35 departments", icon: Calendar },
+  { step: 3, title: "Department Assignment", description: "Get assigned to one of 9 departments", icon: Calendar },
   { step: 4, title: "Begin Internship", description: "Start your 40-45 day journey", icon: ArrowRight },
 ];
 
@@ -57,7 +57,7 @@ export function CTASection() {
               </Button>
             </Link>
             <p className="mt-4 text-sm text-white/60">
-              Registration for Batch 16 closes on December 31, 2025
+              Registration for Batch 8 closes on Feb 28, 2026
             </p>
           </div>
         </div>

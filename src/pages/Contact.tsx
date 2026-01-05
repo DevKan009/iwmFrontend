@@ -16,12 +16,12 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    details: ["iwm@imc.gov.in", "support@iwmindore.gov.in"],
+    details: ["iwmimcindore@gmail.com"],
   },
   {
     icon: Phone,
     title: "Phone",
-    details: ["+91 731 252 1234", "+91 731 252 5678"],
+    details: ["+91 88396 35194"],
   },
   {
     icon: Clock,
