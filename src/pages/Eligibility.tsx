@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {CheckCircle2 } from "lucide-react"
+import { CheckCircle2 } from "lucide-react"
 
 const eligibilityCriteria = [
   { text: "Currently enrolled in undergraduate (any year) or postgraduate program", eligible: true },
@@ -61,8 +61,22 @@ const Eligibility = () => {
   return (
     <PublicLayout>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary via-primary/95 to-emerald-800 py-16">
-        <div className="container">
+      <section className="py-16 relative overflow-hidden">
+        {/* 1. Background Image Layer */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dvneefjpi/image/upload/v1767773020/561807879_17966057843972078_2518633767852562154_n_jesajf.webp')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        />
+
+        {/* 2. Your original Gradient - Now acts as an overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-emerald-800/80 z-10" />
+
+        {/* 3. Your original Content - Added relative and z-20 to stay on top */}
+        <div className="container relative z-20">
           <h1 className="text-4xl font-bold text-white mb-4">Eligibility & FAQ</h1>
           <p className="text-lg text-white/80 max-w-2xl">
             Check if you're eligible for the IWM program and find answers to commonly asked questions.
@@ -71,9 +85,9 @@ const Eligibility = () => {
       </section>
 
       {/* Eligibility Checker */}
-       <section className="py-16 bg-background ">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12">
+      <section className="py-16 bg-background ">
+        <div className="container flex justify-center">
+          <div className="w-full max-w-2xl text-center">
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-6">Eligibility Criteria</h2>
               <div className="space-y-3">
@@ -86,10 +100,10 @@ const Eligibility = () => {
               </div>
             </div>
           </div>
-          </div>
+        </div>
 
-        </section> 
-            {/* Eligibility Checker Tool /}
+      </section>
+      {/* Eligibility Checker Tool /}
             <div className="bg-card rounded-2xl p-6 border border-border shadow-lg h-fit">
               <h3 className="text-xl font-semibold text-foreground mb-6">Quick Eligibility Check</h3>
               <div className="space-y-4">
