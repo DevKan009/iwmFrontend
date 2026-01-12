@@ -1,18 +1,33 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
+import { SEO } from "@/components/SEO";
 import { Input } from "@/components/ui/input";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CheckCircle2 } from "lucide-react"
+import { CheckCircle2, Globe2, GraduationCap, Clock, UserCheck } from "lucide-react"
 
 const eligibilityCriteria = [
-  { text: "Currently enrolled in undergraduate (any year) or postgraduate program", eligible: true },
-  { text: "Recently graduated (within last 2 years)", eligible: true },
-  { text: "Indian citizen with valid ID proof", eligible: true },
-  { text: "Able to commit 40-45 days for the program", eligible: true },
-  { text: "Good academic standing", eligible: true },
-  { text: "No age restriction", eligible: true },
+  {
+    icon: UserCheck,
+    title: "Citizenship & Age",
+    text: "The applicant must be an Indian citizen and should be at least 18 years old at the time of application."
+  },
+  {
+    icon: Globe2,
+    title: "Language Proficiency",
+    text: "Knowledge of Hindi and English is mandatory for effective communication and administration."
+  },
+  {
+    icon: GraduationCap,
+    title: "Educational Qualification",
+    text: "The applicant must have obtained a diploma, graduation, post-graduation, or any other higher qualification from a recognized university."
+  },
+  {
+    icon: Clock,
+    title: "Duration & Commitment",
+    text: "The internship duration can range from 6 weeks to 6 months. During this period, interns must work for a minimum of 20 hours per week."
+  },
 ];
 
 const faqs = [
@@ -60,8 +75,13 @@ const Eligibility = () => {
 
   return (
     <PublicLayout>
+      <SEO
+        title="Eligibility & FAQ"
+        description="Check eligibility criteria for the IWM program. Open to Indian citizens 18+ with a diploma/degree. Find answers to common questions."
+        url="https://iwmindore.gov.in/eligibility"
+      />
       {/* Hero */}
-      <section className="py-16 relative overflow-hidden">
+      <section className="py-32 md:py-40 relative overflow-hidden">
         {/* 1. Background Image Layer */}
         <div
           className="absolute inset-0 z-0"
@@ -73,7 +93,7 @@ const Eligibility = () => {
         />
 
         {/* 2. Your original Gradient - Now acts as an overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-emerald-800/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/70 to-emerald-800/70 z-10" />
 
         {/* 3. Your original Content - Added relative and z-20 to stay on top */}
         <div className="container relative z-20">
@@ -84,24 +104,59 @@ const Eligibility = () => {
         </div>
       </section>
 
-      {/* Eligibility Checker */}
-      <section className="py-16 bg-background ">
-        <div className="container flex justify-center">
-          <div className="w-full max-w-2xl text-center">
-            <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6">Eligibility Criteria</h2>
-              <div className="space-y-3">
-                {eligibilityCriteria.map((item, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 rounded-lg bg-card border border-border">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                    <span className="text-foreground">{item.text}</span>
+      {/* Eligibility Criteria */}
+      <section className="py-20 bg-muted/30">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <span className="inline-block px-4 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
+              Check Your Eligibility
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Who Can Apply?
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Ensure you meet the following requirements to join the Internship with Mayor program.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {eligibilityCriteria.map((item, index) => (
+              <div
+                key={index}
+                className="group p-6 rounded-2xl bg-card border border-border hover:border-emerald-500/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+              >
+                {/* Decorative gradient blob */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-emerald-500/10 transition-colors" />
+
+                <div className="flex items-start gap-4 relatie z-10">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <item.icon className="w-6 h-6" />
                   </div>
-                ))}
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-emerald-700 transition-colors">{item.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{item.text}</p>
+                  </div>
+                </div>
               </div>
+            ))}
+          </div>
+
+          {/* CTA Box */}
+          <div className="mt-16 max-w-4xl mx-auto bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+            <div className="relative z-10">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Meet the criteria?</h3>
+              <p className="text-emerald-100 mb-8 max-w-xl mx-auto text-lg">
+                Don't miss this opportunity to contribute to Indore's development. Applications are open now!
+              </p>
+              <Link to="/register">
+                <div className="inline-flex h-12 items-center justify-center rounded-full bg-white px-8 text-sm font-medium text-emerald-600 shadow transition-colors hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
+                  Apply for Internship
+                </div>
+              </Link>
             </div>
           </div>
         </div>
-
       </section>
       {/* Eligibility Checker Tool /}
             <div className="bg-card rounded-2xl p-6 border border-border shadow-lg h-fit">

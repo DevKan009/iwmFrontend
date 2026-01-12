@@ -43,6 +43,18 @@ const departments = [
     name: "PR & Journalism",
     description: "Manage public relations, media communication, and civic updates."
   },
+  {
+    name: "Electricity",
+    description: "Manage street lighting, electrical infrastructure, and energy efficiency initiatives."
+  },
+  {
+    name: "Garden",
+    description: "Maintain city parks, green belts, and drive urban afforestation projects."
+  },
+  {
+    name: "Workshop/Mechanical",
+    description: "Oversee maintenance of municipal vehicles, machinery, and equipment."
+  },
 ];
 
 export function DepartmentsSection() {
@@ -51,13 +63,13 @@ export function DepartmentsSection() {
       <div className="container">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <span className="inline-block px-4 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
-            9 Departments
+            12 Departments
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Explore Diverse Career Paths
           </h2>
           <p className="text-lg text-muted-foreground">
-            Interns are assigned to one of 9 specialized departments based on their interests, skills, and academic background.
+            Interns are assigned to one of 12 specialized departments based on their interests, skills, and academic background.
           </p>
         </div>
 

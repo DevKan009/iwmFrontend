@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import iwmLogo from "@/assets/iwm-logo.png";
+import imcLogo from "@/assets/IMC_Indore- Logo.jpg";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About IWM" },
@@ -21,14 +22,23 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-card/95 backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-3">
-          <img
-            src={iwmLogo}
-            alt="IWM - Internship with Mayor"
-            className="h-12 w-12 object-contain"
-          />
+          <div className="flex items-center gap-2">
+            <img
+              src={iwmLogo}
+              alt="IWM - Internship with Mayor"
+              className="h-12 w-12 object-contain"
+            />
+            {/* Visual separator */}
+            <div className="h-8 w-[1.5px] bg-border/60 rounded-full hidden xs:block" />
+            <img
+              src={imcLogo}
+              alt="IMC - Indore Municipal Corporation"
+              className="h-10 w-auto object-contain"
+            />
+          </div>
           <div className="hidden sm:block">
-            <p className="text-sm font-semibold text-foreground">Internship with Mayor</p>
-            <p className="text-xs text-muted-foreground">Indore Municipal Corporation</p>
+            <p className="text-sm font-bold text-foreground leading-tight">Internship with Mayor</p>
+            <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wide">Powered by IMC</p>
           </div>
         </Link>
 

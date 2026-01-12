@@ -1,7 +1,8 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Users, Calendar, Award, BookOpen, Building2, Target, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+
 
 const programHighlights = [
   { icon: Calendar, label: "Duration", value: "40-45 Days" },
@@ -21,6 +22,11 @@ const objectives = [
 const About = () => {
   return (
     <PublicLayout>
+      <SEO
+        title="About Us"
+        description="Learn about the Internship with Mayor (IWM) program, its vision, objectives, and the 40-45 day journey transforming youth into civic leaders."
+        url="https://iwmindore.gov.in/about"
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary/95 to-emerald-800 py-20">
         <div className="container">
@@ -71,7 +77,7 @@ const About = () => {
                 Each batch works on real projects across 35 departments, gaining invaluable experience while contributing meaningfully to the development of Indore – consistently ranked as India's cleanest city.
               </p>
             </div>
-            
+
             <div className="bg-card rounded-2xl p-8 border border-border">
               <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
                 <Target className="w-5 h-5 text-emerald-600" />
@@ -106,9 +112,9 @@ const About = () => {
             {[
               { title: "Mentorship from IAS/IPS Officers", desc: "Learn directly from senior government officials with decades of experience." },
               { title: "Certificate of Completion", desc: "Receive a government-recognized certificate upon successful completion." },
-              { title: "Real Project Experience", desc: "Work on actual civic projects impacting millions of citizens." },
               { title: "Professional Network", desc: "Build lasting connections with peers and officials." },
               { title: "Skill Development", desc: "Gain practical skills in governance, management, and public policy." },
+              { title: "Premium Expert Sessions", desc: "Exclusive masterclasses on entrepreneurship, personality development, and high-impact resume building." },
               { title: "Letter of Recommendation", desc: "Outstanding performers receive official recommendations." },
             ].map((benefit) => (
               <div key={benefit.title} className="bg-card rounded-xl p-6 border border-border">
@@ -128,12 +134,12 @@ const About = () => {
           <p className="text-white/80 mb-8 max-w-xl mx-auto">
             Join thousands of young professionals who have transformed their careers through the IWM program.
           </p>
-          <Link to="/register">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSevZtptEtkpNbml4wzx4pvY5TtRDEJ3pBgIWhqZJSwJk9v75w/viewform" target="_blank" rel="noopener noreferrer">
             <Button variant="gold" size="xl" className="group">
               Apply Now
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
     </PublicLayout>
