@@ -1,4 +1,5 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
+import { SEO } from "@/components/SEO";
 import { Input } from "@/components/ui/input";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Search } from "lucide-react";
@@ -74,6 +75,11 @@ const Eligibility = () => {
 
   return (
     <PublicLayout>
+      <SEO
+        title="Eligibility & FAQ"
+        description="Check eligibility criteria for the IWM program. Open to Indian citizens 18+ with a diploma/degree. Find answers to common questions."
+        url="https://iwmindore.gov.in/eligibility"
+      />
       {/* Hero */}
       <section className="py-32 md:py-40 relative overflow-hidden">
         {/* 1. Background Image Layer */}

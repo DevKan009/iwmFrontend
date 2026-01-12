@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { PublicLayout } from "@/components/layout/PublicLayout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Briefcase, GraduationCap, Award, Quote, ArrowRight, Loader2 } from "lucide-react";
-import { Link } from "react-router-dom";
+
 import { client } from "@/sanityClient"; // Make sure this path matches where you created the file
 
 // This defines what the data looks like so TypeScript is happy
@@ -37,7 +38,7 @@ const Alumni = () => {
           quote,
           highlight
         }`;
-        
+
         const data = await client.fetch(query);
         setAlumni(data);
       } catch (error) {
@@ -52,6 +53,11 @@ const Alumni = () => {
 
   return (
     <PublicLayout>
+      <SEO
+        title="Alumni Network"
+        description="Meet the IWM Alumni Network. Stories of interns who have worked on real civic projects and moved on to impactful careers."
+        url="https://iwmindore.gov.in/alumni"
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary via-primary/95 to-emerald-800 py-16">
         <div className="container">
@@ -89,7 +95,7 @@ const Alumni = () => {
       {/* Alumni Grid Section */}
       <section className="py-16 bg-background">
         <div className="container">
-          
+
           {/* Conditional Rendering: Show Loader OR Show Data */}
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
@@ -155,12 +161,12 @@ const Alumni = () => {
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
             Join the IWM program and start your journey towards a meaningful career in public service.
           </p>
-          <Link to="/register">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSevZtptEtkpNbml4wzx4pvY5TtRDEJ3pBgIWhqZJSwJk9v75w/viewform" target="_blank" rel="noopener noreferrer">
             <Button variant="civic" size="lg" className="group">
               Apply Now
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
     </PublicLayout>

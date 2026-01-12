@@ -1,4 +1,5 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
+import { SEO } from "@/components/SEO";
 import { HeroSection } from "@/components/home/HeroSection";
 import { MayorsVisionSection } from "@/components/home/MayorsVisionSection";
 import { AboutSection } from "@/components/home/AboutSection";
@@ -10,6 +11,10 @@ import { HomeGallery } from "@/components/home/HomeGallery";
 const Index = () => {
   return (
     <PublicLayout>
+      <SEO
+        title="Home"
+        url="https://iwmindore.gov.in/"
+      />
       <HeroSection />
       <MayorsVisionSection />
       <HomeGallery />

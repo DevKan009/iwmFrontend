@@ -1,11 +1,6 @@
 import { PublicLayout } from "@/components/layout/PublicLayout";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Clock, Send, Instagram, Linkedin } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { SEO } from "@/components/SEO";
+import { Mail, Phone, MapPin, Clock, Instagram, Linkedin } from "lucide-react";
 
 const contactInfo = [
   {
@@ -13,6 +8,18 @@ const contactInfo = [
     title: "Address",
     details: ["Indore Municipal Corporation", "M.G. Road, Indore", "Madhya Pradesh - 452001"],
     link: "https://www.google.com/maps/search/?api=1&query=Indore+Municipal+Corporation+MG+Road+Indore",
+  },
+  {
+    icon: MapPin,
+    title: "AICTSL Office",
+    details: ["Plot No. 30, Residency Area, AB Road", "Opposite MGM Medical College", "Indore - 452001"],
+    link: "https://www.google.com/maps/search/?api=1&query=AICTSL+Office+Indore",
+  },
+  {
+    icon: MapPin,
+    title: "Smart City Office",
+    details: ["Nehru Park Campus", "Indore - 452003"],
+    link: "https://www.google.com/maps/search/Indore+Smart+City+Development,+Nehru+Park+Campus,+Park+Road,+Indore-452003,+Madhya+Pradesh,+India",
   },
   {
     icon: Mail,
@@ -23,7 +30,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["+91 88396 35194"],
+    details: ["+91 88396 35194", "+91 98263 32221"],
     link: "tel:+918839635194",
   },
   {
@@ -47,25 +54,13 @@ const contactInfo = [
 ];
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Message Sent",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
   return (
     <PublicLayout>
+      <SEO
+        title="Contact Us"
+        description="Get in touch with the IWM team. Visit our office at Indore Municipal Corporation or check our AICTSL and Smart City office locations."
+        url="https://iwmindore.gov.in/contact"
+      />
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary via-primary/95 to-emerald-800 py-16">
         <div className="container">
@@ -78,7 +73,7 @@ const Contact = () => {
 
       <section className="py-16 bg-background">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="max-w-4xl mx-auto">
             {/* Contact Info */}
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h2>
@@ -91,17 +86,29 @@ const Contact = () => {
                       href={item.link || undefined}
                       target={item.link?.startsWith('http') ? "_blank" : undefined}
                       rel={item.link?.startsWith('http') ? "noopener noreferrer" : undefined}
-                      className={`p-6 rounded-xl bg-card border border-border transition-colors ${item.link ? 'hover:border-primary/50 hover:bg-primary/5 cursor-pointer' : ''}`}
+                      className={`p-6 rounded-xl bg-card border border-border transition-colors flex flex-col ${item.link ? 'hover:border-primary/50 hover:bg-primary/5 cursor-pointer' : ''}`}
                     >
                       <div className="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
                         <item.icon className="w-6 h-6" />
                       </div>
                       <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-                      {item.details.map((detail, index) => (
-                        <p key={index} className="text-sm text-muted-foreground">
-                          {detail}
-                        </p>
-                      ))}
+                      <div className="flex-grow">
+                        {item.details.map((detail, index) => (
+                          <p key={index} className="text-sm text-muted-foreground">
+                            {detail}
+                          </p>
+                        ))}
+                      </div>
+                      {item.link && item.icon === MapPin && (
+                        <div className="mt-4 pt-4 border-t border-border/50">
+                          <span className="text-sm font-medium text-primary flex items-center">
+                            View Location
+                            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </span>
+                        </div>
+                      )}
                     </Wrapper>
                   );
                 })}
@@ -123,63 +130,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-card rounded-2xl p-8 border border-border shadow-lg h-fit">
-              <h3 className="text-xl font-semibold text-foreground mb-6">Send us a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name *</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="your@email.com"
-                      required
-                    />
-                  </div>
-                </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject *</Label>
-                  <Input
-                    id="subject"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="What is this regarding?"
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message *</Label>
-                  <Textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Your message..."
-                    className="min-h-[150px]"
-                    required
-                  />
-                </div>
-
-                <Button type="submit" className="w-full" size="lg">
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </Button>
-              </form>
-            </div>
           </div>
         </div>
       </section>
