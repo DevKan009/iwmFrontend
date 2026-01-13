@@ -48,7 +48,7 @@ export function Footer() {
               <span className="text-sm text-muted-foreground">Public Health</span>
               <span className="text-sm text-muted-foreground">Smart City</span>
               <Link to="/#DepartmentsSection" className="text-sm text-civic-green hover:underline">
-                View all 9 departments →
+                View all 12 departments →
               </Link>
             </nav>
           </div>

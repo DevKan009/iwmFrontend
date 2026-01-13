@@ -7,7 +7,7 @@ import CountUp from "@/components/ui/countup";
 
 const stats = [
   { label: "Interns Trained", value: "2,500+", icon: Users, end: 2500, suffix: "+" },
-  { label: "Departments", value: "9", icon: Building2, end: 9, suffix: "" },
+  { label: "Departments", value: "12", icon: Building2, end: 12, suffix: "" },
   { label: "Batches", value: "7+", icon: Calendar, end: 7, suffix: "+" },
 ];
 

@@ -7,7 +7,7 @@ import { CheckCircle2, Users, Calendar, Award, BookOpen, Building2, Target, Arro
 const programHighlights = [
   { icon: Calendar, label: "Duration", value: "40-45 Days" },
   { icon: Users, label: "Batch Size", value: "200+ Interns" },
-  { icon: Building2, label: "Departments", value: "9 Specialized" },
+  { icon: Building2, label: "Departments", value: "12 Specialized" },
   { icon: Award, label: "Certificate", value: "Government Recognized" },
 ];
 
@@ -74,7 +74,7 @@ const About = () => {
                 The IWM program was conceived to create a bridge between aspiring young professionals and the complex world of municipal governance. Under the visionary leadership of the Mayor and IMC Commissioner, this initiative transforms interns into future civic leaders.
               </p>
               <p className="text-muted-foreground">
-                Each batch works on real projects across 35 departments, gaining invaluable experience while contributing meaningfully to the development of Indore – consistently ranked as India's cleanest city.
+                Each batch works on real projects across 12 departments, gaining invaluable experience while contributing meaningfully to the development of Indore – consistently ranked as India's cleanest city.
               </p>
             </div>
 
@@ -114,7 +114,7 @@ const About = () => {
               { title: "Certificate of Completion", desc: "Receive a government-recognized certificate upon successful completion." },
               { title: "Professional Network", desc: "Build lasting connections with peers and officials." },
               { title: "Skill Development", desc: "Gain practical skills in governance, management, and public policy." },
-              { title: "Premium Expert Sessions", desc: "Exclusive masterclasses on entrepreneurship, personality development, and high-impact resume building." },
+              { title: "Motivational & Awareness Sessions", desc: "Exclusive masterclasses on entrepreneurship, personality development, and high-impact resume building." },
               { title: "Letter of Recommendation", desc: "Outstanding performers receive official recommendations." },
             ].map((benefit) => (
               <div key={benefit.title} className="bg-card rounded-xl p-6 border border-border">
