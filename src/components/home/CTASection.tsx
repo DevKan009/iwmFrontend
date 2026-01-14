@@ -5,7 +5,7 @@ import { ArrowRight, Calendar, Clock, FileCheck } from "lucide-react";
 const timeline = [
   { step: 1, title: "Register Online", description: "Complete the application form with your details", icon: FileCheck },
   { step: 2, title: "Selection Process", description: "Review and shortlisting by IWM committee", icon: Clock },
-  { step: 3, title: "Department Assignment", description: "Get assigned to one of 9 departments", icon: Calendar },
+  { step: 3, title: "Department Assignment", description: "Get assigned to one of 12 departments", icon: Calendar },
   { step: 4, title: "Begin Internship", description: "Start your 40-45 day journey", icon: ArrowRight },
 ];
 
@@ -51,12 +51,12 @@ export function CTASection() {
                 {index < timeline.length - 1 && (
                   <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-white/20" />
                 )}
-                <div className="relative bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 transition-all">
+                <div className="relative bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center hover:bg-white/20 hover:scale-105 transition-all duration-300 h-full flex flex-col">
                   <div className="w-16 h-16 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center mx-auto mb-4 font-bold text-xl">
                     {item.step}
                   </div>
-                  <h3 className="font-semibold text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-white/70">{item.description}</p>
+                  <h3 className="font-semibold text-white mb-2 min-h-[2.5rem] flex items-center justify-center">{item.title}</h3>
+                  <p className="text-sm text-white/70 min-h-[3rem] flex items-center justify-center">{item.description}</p>
                 </div>
               </div>
             ))}

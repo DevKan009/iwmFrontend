@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import iwmLogo from "@/assets/iwm-logo.png";
-import imcLogo from "@/assets/IMC_Indore- Logo.jpg";
+
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About IWM" },
@@ -24,14 +23,14 @@ export function Header() {
         <Link to="/" className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <img
-              src={iwmLogo}
+              src="https://res.cloudinary.com/dvneefjpi/image/upload/v1767773032/IWM_LOGO_ENHANCED_background_cleared_otc4tw.png"
               alt="IWM - Internship with Mayor"
               className="h-12 w-12 object-contain"
             />
             {/* Visual separator */}
             <div className="h-8 w-[1.5px] bg-border/60 rounded-full hidden xs:block" />
             <img
-              src={imcLogo}
+              src="https://res.cloudinary.com/dvneefjpi/image/upload/v1768325433/enhanced_IMC_logo_background_clear_kdywgz.png"
               alt="IMC - Indore Municipal Corporation"
               className="h-10 w-auto object-contain"
             />
@@ -61,7 +60,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link to="https://docs.google.com/forms/d/e/1FAIpQLSevZtptEtkpNbml4wzx4pvY5TtRDEJ3pBgIWhqZJSwJk9v75w/viewform" className="hidden lg:block">
+          <Link to="https://docs.google.com/forms/d/e/1FAIpQLSevZtptEtkpNbml4wzx4pvY5TtRDEJ3pBgIWhqZJSwJk9v75w/viewform" className="hidden lg:block" target="_blank" rel="noopener noreferrer">
             <Button variant="hero" size="sm" className="shadow-none">Register Now</Button>
           </Link>
 

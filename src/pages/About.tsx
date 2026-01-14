@@ -7,7 +7,7 @@ import { CheckCircle2, Users, Calendar, Award, BookOpen, Building2, Target, Arro
 const programHighlights = [
   { icon: Calendar, label: "Duration", value: "40-45 Days" },
   { icon: Users, label: "Batch Size", value: "200+ Interns" },
-  { icon: Building2, label: "Departments", value: "9 Specialized" },
+  { icon: Building2, label: "Departments", value: "12 Specialized" },
   { icon: Award, label: "Certificate", value: "Government Recognized" },
 ];
 
@@ -27,10 +27,25 @@ const About = () => {
         description="Learn about the Internship with Mayor (IWM) program, its vision, objectives, and the 40-45 day journey transforming youth into civic leaders."
         url="https://iwmindore.gov.in/about"
       />
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-primary/95 to-emerald-800 py-20">
-        <div className="container">
-          <div className="max-w-3xl">
+   {/* Hero Section */}
+      {/* FIX: Increased pb-32 to pb-48 (and pb-60 on larger screens). 
+          This makes the blue section taller, creating room for the cards to overlap 
+          without covering the text.
+      */}
+      <section className="relative bg-gradient-to-br from-primary via-primary/95 to-emerald-800 pt-20 pb-48 md:pb-60">
+        
+        {/* Background image behind the gradient */}
+        <div
+          className="absolute inset-0 z-0 opacity-20 pointer-events-none"
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dvneefjpi/image/upload/v1768369473/Untitled_design1_u1lcae.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+
+        <div className="container relative z-10">
+          <div className="max-w-3xl pt-12 md:pt-20 lg:pt-28">
             <span className="inline-block px-4 py-1 rounded-full bg-white/10 text-white/90 text-sm font-medium mb-4">
               About the Program
             </span>
@@ -47,9 +62,14 @@ const About = () => {
       {/* Program Highlights */}
       <section className="py-12 bg-background">
         <div className="container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 -mt-20">
+          {/* FIX: Added 'relative z-20' to ensure cards sit firmly on top of the hero background.
+             Optional: You can adjust -mt-20 to -mt-24 if you want them to overlap more, 
+             now that there is room.
+          */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 -mt-24 relative z-20">
             {programHighlights.map((item) => (
-              <div key={item.label} className="bg-card rounded-xl p-6 shadow-lg border border-border">
+              <div key={item.label} className="bg-card rounded-xl p-6 shadow-lg border border-border bg-white">
+                 {/* Note: Added bg-white above just in case 'bg-card' is transparent */}
                 <item.icon className="w-8 h-8 text-emerald-600 mb-3" />
                 <p className="text-sm text-muted-foreground">{item.label}</p>
                 <p className="text-xl font-bold text-foreground">{item.value}</p>
@@ -74,7 +94,7 @@ const About = () => {
                 The IWM program was conceived to create a bridge between aspiring young professionals and the complex world of municipal governance. Under the visionary leadership of the Mayor and IMC Commissioner, this initiative transforms interns into future civic leaders.
               </p>
               <p className="text-muted-foreground">
-                Each batch works on real projects across 35 departments, gaining invaluable experience while contributing meaningfully to the development of Indore – consistently ranked as India's cleanest city.
+                Each batch works on real projects across 12 departments, gaining invaluable experience while contributing meaningfully to the development of Indore – consistently ranked as India's cleanest city.
               </p>
             </div>
 
@@ -114,7 +134,7 @@ const About = () => {
               { title: "Certificate of Completion", desc: "Receive a government-recognized certificate upon successful completion." },
               { title: "Professional Network", desc: "Build lasting connections with peers and officials." },
               { title: "Skill Development", desc: "Gain practical skills in governance, management, and public policy." },
-              { title: "Premium Expert Sessions", desc: "Exclusive masterclasses on entrepreneurship, personality development, and high-impact resume building." },
+              { title: "Motivational & Awareness Sessions", desc: "Exclusive masterclasses on entrepreneurship, personality development, and high-impact resume building." },
               { title: "Letter of Recommendation", desc: "Outstanding performers receive official recommendations." },
             ].map((benefit) => (
               <div key={benefit.title} className="bg-card rounded-xl p-6 border border-border">

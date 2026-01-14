@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Building2, Award, Calendar } from "lucide-react";
-import iwmLogo from "@/assets/iwm-logo.png";
-import student1 from "@/assets/student1.jpg.webp";
 import CountUp from "@/components/ui/countup";
 
 const stats = [
   { label: "Interns Trained", value: "2,500+", icon: Users, end: 2500, suffix: "+" },
-  { label: "Departments", value: "9", icon: Building2, end: 9, suffix: "" },
+  { label: "Departments", value: "12", icon: Building2, end: 12, suffix: "" },
   { label: "Batches", value: "7+", icon: Calendar, end: 7, suffix: "+" },
 ];
 
@@ -17,7 +15,7 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src={student1}
+          src="https://res.cloudinary.com/dvneefjpi/image/upload/v1767773021/563266662_17966057897972078_8206455677809502512_n_hrc7iy.webp"
           alt="Background"
           className="w-full h-full object-cover"
         />
@@ -80,7 +78,7 @@ export function HeroSection() {
               {/* Center content */}
               <div className="absolute inset-10 rounded-full bg-white/95 backdrop-blur-md flex items-center justify-center shadow-2xl overflow-hidden p-4">
                 <img
-                  src={iwmLogo}
+                  src="https://res.cloudinary.com/dvneefjpi/image/upload/v1767773032/IWM_LOGO_ENHANCED_jkruoi.png"
                   alt="IWM - Internship with Mayor"
                   className="w-full h-full object-contain rounded-full"
                 />

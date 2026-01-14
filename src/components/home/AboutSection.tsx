@@ -13,8 +13,8 @@ const features = [
   },
   {
     icon: BookOpen,
-    title: "Skill Development",
-    description: "Gain practical skills in governance, project management, and public policy.",
+    title: "Motivational and Awaereness Sessions",
+    description: "Exclusive masterclasses on entrepreneurship, personality development, and high-impact resume building.",
   },
   {
     icon: Award,
@@ -45,11 +45,12 @@ export function AboutSection() {
             Shape the Future of Urban Governance
           </h2>
           <p className="text-lg text-muted-foreground">
-            The IWM program offers a unique opportunity for young minds to engage with municipal governance, working across 9 departments to drive innovation and development in India's cleanest city.
+            The IWM program offers a unique opportunity for young minds to engage with municipal governance, working across 12 departments to drive innovation and development in India's cleanest city.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
           {features.map((feature) => (
             <div
               key={feature.title}

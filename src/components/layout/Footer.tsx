@@ -1,7 +1,35 @@
-import { Link } from "react-router-dom";
-import iwmLogo from "@/assets/iwm-logo.png";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Footer() {
+  const navigate = useNavigate();
+
+  const handleDepartmentsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    
+    // If already on home page, just scroll
+    if (window.location.pathname === '/') {
+      const element = document.getElementById('DepartmentsSection');
+      if (element) {
+        const headerOffset = 80; // Account for sticky header
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to home page, then scroll
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById('DepartmentsSection');
+        if (element) {
+          const headerOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="container py-12">
@@ -10,7 +38,12 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <img
-                src={iwmLogo}
+                src="https://res.cloudinary.com/dvneefjpi/image/upload/v1767773032/IWM_LOGO_ENHANCED_background_cleared_otc4tw.png"
+                alt="IWM - Internship with Mayor"
+                className="h-12 w-12 object-contain rounded-full bg-white p-0.5 shadow-sm"
+              />
+              <img
+                src="https://res.cloudinary.com/dvneefjpi/image/upload/v1768325433/enhanced_IMC_logo_background_clear_kdywgz.png"
                 alt="IWM - Internship with Mayor"
                 className="h-12 w-12 object-contain rounded-full bg-white p-0.5 shadow-sm"
               />
@@ -47,9 +80,13 @@ export function Footer() {
               <span className="text-sm text-muted-foreground">Urban Planning</span>
               <span className="text-sm text-muted-foreground">Public Health</span>
               <span className="text-sm text-muted-foreground">Smart City</span>
-              <Link to="/#DepartmentsSection" className="text-sm text-civic-green hover:underline">
-                View all 9 departments →
-              </Link>
+              <a 
+                href="/#DepartmentsSection" 
+                onClick={handleDepartmentsClick}
+                className="text-sm text-civic-green hover:underline cursor-pointer"
+              >
+                View all 12 departments →
+              </a>
             </nav>
           </div>
 

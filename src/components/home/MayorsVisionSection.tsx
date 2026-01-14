@@ -1,4 +1,3 @@
-import mayorImg from "@/assets/mayor Sir.webp";
 
 export function MayorsVisionSection() {
     return (
@@ -29,7 +28,7 @@ export function MayorsVisionSection() {
                         <div className="flex items-center gap-4 pt-4">
                             <div className="h-12 w-1 bg-gradient-to-b from-emerald-500 to-transparent rounded-full" />
                             <div>
-                                <h3 className="text-2xl font-bold text-white">Pushyamitra Bhargav</h3>
+                                <h3 className="text-2xl font-bold text-white">Shri Pushyamitra Bhargav</h3>
                                 <p className="text-emerald-400 font-medium tracking-wide">Mayor, Indore Municipal Corporation</p>
                             </div>
                         </div>
@@ -44,7 +43,7 @@ export function MayorsVisionSection() {
 
                             {/* Actual Image */}
                             <img
-                                src={mayorImg}
+                                src="https://res.cloudinary.com/dvneefjpi/image/upload/v1768365089/572388928_18346669150203742_1134080856149661706_n_x8m0il_m9urns.png"
                                 alt="Mayor Pushyamitra Bhargav"
                                 className="relative z-10 w-full h-full object-cover rounded-xl shadow-2xl border border-white/10"
                             />
