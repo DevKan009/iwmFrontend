@@ -59,7 +59,7 @@ const departments = [
 
 export function DepartmentsSection() {
   return (
-    <section className="py-20 bg-muted/50">
+    <section id="DepartmentsSection" className="py-20 bg-muted/50">
       <div className="container">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <span className="inline-block px-4 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">

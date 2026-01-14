@@ -13,8 +13,8 @@ const features = [
   },
   {
     icon: BookOpen,
-    title: "Skill Development",
-    description: "Gain practical skills in governance, project management, and public policy.",
+    title: "Motivational and Awaereness Sessions",
+    description: "Exclusive masterclasses on entrepreneurship, personality development, and high-impact resume building.",
   },
   {
     icon: Award,

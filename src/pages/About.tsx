@@ -27,9 +27,24 @@ const About = () => {
         description="Learn about the Internship with Mayor (IWM) program, its vision, objectives, and the 40-45 day journey transforming youth into civic leaders."
         url="https://iwmindore.gov.in/about"
       />
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-primary/95 to-emerald-800 py-20">
-        <div className="container">
+   {/* Hero Section */}
+      {/* FIX: Increased pb-32 to pb-48 (and pb-60 on larger screens). 
+          This makes the blue section taller, creating room for the cards to overlap 
+          without covering the text.
+      */}
+      <section className="relative bg-gradient-to-br from-primary via-primary/95 to-emerald-800 pt-20 pb-48 md:pb-60">
+        
+        {/* Background image behind the gradient */}
+        <div
+          className="absolute inset-0 z-0 opacity-20 pointer-events-none"
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dvneefjpi/image/upload/v1768368501/Untitled_design_iytosf.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+
+        <div className="container relative z-10">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-1 rounded-full bg-white/10 text-white/90 text-sm font-medium mb-4">
               About the Program
@@ -47,9 +62,14 @@ const About = () => {
       {/* Program Highlights */}
       <section className="py-12 bg-background">
         <div className="container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 -mt-20">
+          {/* FIX: Added 'relative z-20' to ensure cards sit firmly on top of the hero background.
+             Optional: You can adjust -mt-20 to -mt-24 if you want them to overlap more, 
+             now that there is room.
+          */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 -mt-24 relative z-20">
             {programHighlights.map((item) => (
-              <div key={item.label} className="bg-card rounded-xl p-6 shadow-lg border border-border">
+              <div key={item.label} className="bg-card rounded-xl p-6 shadow-lg border border-border bg-white">
+                 {/* Note: Added bg-white above just in case 'bg-card' is transparent */}
                 <item.icon className="w-8 h-8 text-emerald-600 mb-3" />
                 <p className="text-sm text-muted-foreground">{item.label}</p>
                 <p className="text-xl font-bold text-foreground">{item.value}</p>

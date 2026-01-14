@@ -149,7 +149,7 @@ const Eligibility = () => {
               <p className="text-emerald-100 mb-8 max-w-xl mx-auto text-lg">
                 Don't miss this opportunity to contribute to Indore's development. Applications are open now!
               </p>
-              <Link to="/register">
+              <Link to="https://docs.google.com/forms/d/e/1FAIpQLSevZtptEtkpNbml4wzx4pvY5TtRDEJ3pBgIWhqZJSwJk9v75w/viewform">
                 <div className="inline-flex h-12 items-center justify-center rounded-full bg-white px-8 text-sm font-medium text-emerald-600 shadow transition-colors hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
                   Apply for Internship
                 </div>
