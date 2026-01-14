@@ -45,7 +45,7 @@ const About = () => {
         />
 
         <div className="container relative z-10">
-          <div className="max-w-3xl pt-12 md:pt-20 lg:pt-28">
+          <div className="max-w-3xl">
             <span className="inline-block px-4 py-1 rounded-full bg-white/10 text-white/90 text-sm font-medium mb-4">
               About the Program
             </span>
