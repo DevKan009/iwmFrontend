@@ -38,7 +38,7 @@ export function AboutSection() {
     <section className="py-20 bg-background">
       <div className="container">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1 rounded-full bg-slate-900 text-white text-sm font-medium mb-4">
             About the Program
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">

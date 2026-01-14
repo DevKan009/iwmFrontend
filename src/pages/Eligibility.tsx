@@ -142,11 +142,11 @@ const Eligibility = () => {
           </div>
 
           {/* CTA Box */}
-          <div className="mt-16 max-w-4xl mx-auto bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl relative overflow-hidden">
+          <div className="mt-16 max-w-4xl mx-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 text-center text-white shadow-2xl relative overflow-hidden">
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">Meet the criteria?</h3>
-              <p className="text-emerald-100 mb-8 max-w-xl mx-auto text-lg">
+              <p className="text-slate-300 mb-8 max-w-xl mx-auto text-lg">
                 Don't miss this opportunity to contribute to Indore's development. Applications are open now!
               </p>
               <Link to="https://docs.google.com/forms/d/e/1FAIpQLSevZtptEtkpNbml4wzx4pvY5TtRDEJ3pBgIWhqZJSwJk9v75w/viewform">

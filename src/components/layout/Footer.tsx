@@ -5,7 +5,7 @@ export function Footer() {
 
   const handleDepartmentsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    
+
     // If already on home page, just scroll
     if (window.location.pathname === '/') {
       const element = document.getElementById('DepartmentsSection');
@@ -49,7 +49,7 @@ export function Footer() {
               />
               <div>
                 <p className="text-sm font-semibold text-foreground">Internship with Mayor</p>
-                <p className="text-xs text-muted-foreground">IMC, Indore</p>
+                <p className="text-xs text-muted-foreground">Indore Municipal Corporation</p>
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
@@ -80,8 +80,8 @@ export function Footer() {
               <span className="text-sm text-muted-foreground">Urban Planning</span>
               <span className="text-sm text-muted-foreground">Public Health</span>
               <span className="text-sm text-muted-foreground">Smart City</span>
-              <a 
-                href="/#DepartmentsSection" 
+              <a
+                href="/#DepartmentsSection"
                 onClick={handleDepartmentsClick}
                 className="text-sm text-civic-green hover:underline cursor-pointer"
               >

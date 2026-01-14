@@ -32,7 +32,7 @@ export function HeroSection() {
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
               Internship with
-              <span className="block text-amber-400">Mayor, Indore</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Mayor, Indore</span>
             </h1>
 
             <p className="text-lg text-white/80 max-w-xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.45s" }}>

@@ -67,12 +67,12 @@ export function HomeGallery() {
                 // basis-1/2 means 2 images visible on tablet, basis-1/3 means 3 on desktop
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
                   <div className="p-1">
-                    <Card className="border-0 shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <Card className="border-0 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300">
                       <CardContent className="flex aspect-video items-center justify-center p-0 overflow-hidden rounded-lg">
                         <img
                           src={img.src}
                           alt={img.alt}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                          className="w-full h-full object-cover"
                         />
                       </CardContent>
                     </Card>
