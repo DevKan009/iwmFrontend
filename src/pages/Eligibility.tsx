@@ -74,7 +74,7 @@ const Eligibility = () => {
         url="https://iwmindore.gov.in/eligibility"
       />
       {/* Hero */}
-      <section className="py-32 md:py-40 relative overflow-hidden">
+      <section className="min-h-[45vh] md:min-h-[60vh] py-20 relative overflow-hidden flex items-center">
         {/* 1. Background Image Layer */}
         <div
           className="absolute inset-0 z-0"

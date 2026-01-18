@@ -59,8 +59,22 @@ const Alumni = () => {
         url="https://iwmindore.gov.in/alumni"
       />
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-primary/95 to-emerald-800 py-32 md:py-40">
-        <div className="container">
+      {/* Hero Section */}
+      <section className="min-h-[45vh] md:min-h-[60vh] py-20 relative overflow-hidden flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url('https://res.cloudinary.com/dvneefjpi/image/upload/v1768744064/ChatGPT_Image_Jan_18_2026_07_17_05_PM_wu8sd3.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/70 to-emerald-800/70 z-10" />
+
+        <div className="container relative z-20">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-1 rounded-full bg-white/10 text-white/90 text-sm font-medium mb-4">
               Success Stories
@@ -76,7 +90,7 @@ const Alumni = () => {
       {/* Stats Section */}
       <section className="py-12 bg-background">
         <div className="container">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 -mt-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 -mt-20 relative z-20">
             {[
               { label: "Total Alumni", value: "2,500+" },
               { label: "Placed in Govt. Jobs", value: "350+" },

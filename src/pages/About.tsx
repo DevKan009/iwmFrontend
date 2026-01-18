@@ -28,19 +28,22 @@ const About = () => {
         url="https://iwmindore.gov.in/about"
       />
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary via-primary/95 to-emerald-800 py-32 md:py-40">
+      <section className="min-h-[45vh] md:min-h-[60vh] py-20 relative overflow-hidden flex items-center">
 
         {/* Background image behind the gradient */}
         <div
-          className="absolute inset-0 z-0 opacity-20 pointer-events-none"
+          className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `url('https://res.cloudinary.com/dvneefjpi/image/upload/v1768369473/Untitled_design1_u1lcae.png')`,
+            backgroundImage: `url('https://res.cloudinary.com/dvneefjpi/image/upload/v1768737795/contact_image_xhpzzm.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
 
-        <div className="container relative z-10">
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/70 to-emerald-800/70 z-10" />
+
+        <div className="container relative z-20">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-1 rounded-full bg-white/10 text-white/90 text-sm font-medium mb-4">
               About the Program
@@ -62,7 +65,7 @@ const About = () => {
              Optional: You can adjust -mt-20 to -mt-24 if you want them to overlap more, 
              now that there is room.
           */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 -mt-24 relative z-20">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 -mt-20 relative z-20">
             {programHighlights.map((item) => (
               <div key={item.label} className="bg-card rounded-xl p-6 shadow-lg border border-border bg-white">
                 {/* Note: Added bg-white above just in case 'bg-card' is transparent */}

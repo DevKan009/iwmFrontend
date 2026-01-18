@@ -6,19 +6,19 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "IMC Head Office",
-    details: ["Indore Municipal Corporation", "M.G. Road, Indore", "Madhya Pradesh - 452001"],
+    details: [],
     link: "https://www.google.com/maps/search/?api=1&query=Indore+Municipal+Corporation+MG+Road+Indore",
   },
   {
     icon: MapPin,
     title: "AICTSL Office",
-    details: ["Plot No. 30, Residency Area, AB Road", "Opposite MGM Medical College", "Indore - 452001"],
+    details: [],
     link: "https://www.google.com/maps/search/?api=1&query=AICTSL+Office+Indore",
   },
   {
     icon: MapPin,
     title: "Smart City Office",
-    details: ["Nehru Park Campus", "Indore - 452003"],
+    details: [],
     link: "https://www.google.com/maps/search/Indore+Smart+City+Development,+Nehru+Park+Campus,+Park+Road,+Indore-452003,+Madhya+Pradesh,+India",
   },
   {
@@ -62,11 +62,11 @@ const Contact = () => {
         url="https://iwmindore.gov.in/contact"
       />
       {/* Hero */}
-      <section className="relative overflow-hidden py-32 md:py-40">
+      <section className="min-h-[45vh] md:min-h-[60vh] py-20 relative overflow-hidden flex items-center">
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `url('https://res.cloudinary.com/dvneefjpi/image/upload/v1768729055/52863ccf-84c3-44f8-bc07-cc119bbc576a_knk8el.jpg')`,
+            backgroundImage: `url('https://res.cloudinary.com/dvneefjpi/image/upload/v1768740360/Jan_18_2026_06_15_38_PM_ikwdoh.png')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
@@ -95,22 +95,23 @@ const Contact = () => {
                       href={item.link || undefined}
                       target={item.link?.startsWith('http') ? "_blank" : undefined}
                       rel={item.link?.startsWith('http') ? "noopener noreferrer" : undefined}
-                      className={`p-6 rounded-xl bg-card border border-border transition-colors flex flex-col ${item.link ? 'hover:border-primary/50 hover:bg-primary/5 cursor-pointer' : ''}`}
+                      className={`group p-6 rounded-2xl bg-card border border-border transition-all duration-300 flex flex-col ${item.link ? 'cursor-pointer hover:-translate-y-1 hover:shadow-xl hover:border-emerald-500/50' : 'hover:shadow-lg'
+                        }`}
                     >
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
                         <item.icon className="w-6 h-6" />
                       </div>
-                      <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-                      <div className="flex-grow">
+                      <h3 className="font-semibold text-lg text-foreground mb-2 group-hover:text-emerald-700 transition-colors">{item.title}</h3>
+                      <div className="flex-grow space-y-1">
                         {item.details.map((detail, index) => (
-                          <p key={index} className="text-sm text-muted-foreground">
+                          <p key={index} className="text-sm text-muted-foreground leading-relaxed">
                             {detail}
                           </p>
                         ))}
                       </div>
                       {item.link && item.icon === MapPin && (
                         <div className="mt-4 pt-4 border-t border-border/50">
-                          <span className="text-sm font-medium text-primary flex items-center">
+                          <span className="text-sm font-medium text-emerald-600 flex items-center group-hover:translate-x-1 transition-transform">
                             View Location
                             <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -124,7 +125,7 @@ const Contact = () => {
               </div>
 
               {/* Map */}
-              <div className="w-full h-64 rounded-xl bg-muted border border-border overflow-hidden shadow-sm">
+              <div className="w-full h-96 rounded-2xl bg-muted border border-border overflow-hidden shadow-xl ring-1 ring-black/5">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.057077553259!2d75.86795897588825!3d22.72609952732924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd7112a20121%3A0xb3518386f7847be5!2sNagar%20Nigam%20Indore!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
                   width="100%"
