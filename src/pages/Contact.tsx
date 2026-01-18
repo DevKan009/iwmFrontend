@@ -72,9 +72,9 @@ const Contact = () => {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/70 to-emerald-800/70 z-10" />
-        <div className="container relative z-20 text-center">
+        <div className="container relative z-20">
           <h1 className="text-4xl font-bold text-white mb-4">Contact Us</h1>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 max-w-2xl">
             Have questions about the IWM program? We're here to help. Reach out to us through any of the channels below.
           </p>
         </div>
