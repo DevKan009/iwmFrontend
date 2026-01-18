@@ -86,13 +86,13 @@ export function HeroSection() {
 
               {/* Floating badges */}
               {/* Floating badges */}
-              <div className="absolute top-8 -right-4 px-3 py-1.5 rounded-lg bg-emerald-500 text-white font-semibold text-xs shadow-lg animate-float">
+              <div className="absolute top-8 -right-4 px-3 py-1.5 rounded-lg bg-emerald-400 text-white font-semibold text-xs shadow-lg animate-float">
                 40-45 Days
               </div>
-              <div className="absolute bottom-16 -left-8 px-3 py-1.5 rounded-lg bg-emerald-500 text-white font-semibold text-xs shadow-lg animate-float" style={{ animationDelay: "1.5s" }}>
+              <div className="absolute bottom-16 -left-8 px-3 py-1.5 rounded-lg bg-emerald-400 text-white font-semibold text-xs shadow-lg animate-float" style={{ animationDelay: "1.5s" }}>
                 Batches every 2–3 months
               </div>
-              <div className="absolute bottom-8 -right-4 px-3 py-1.5 rounded-lg bg-emerald-500 text-white font-semibold text-xs shadow-lg animate-float" style={{ animationDelay: "1s" }}>
+              <div className="absolute bottom-8 -right-4 px-3 py-1.5 rounded-lg bg-emerald-400 text-white font-semibold text-xs shadow-lg animate-float" style={{ animationDelay: "1s" }}>
                 Certificate on Completion
               </div>
             </div>
