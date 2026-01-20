@@ -4,18 +4,23 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Briefcase, GraduationCap, Award, Quote, ArrowRight, Loader2 } from "lucide-react";
 
-import { client } from "@/sanityClient"; // Make sure this path matches where you created the file
+import { client } from "@/sanityClient";
+import { urlFor } from "@/lib/sanityImageUrl";
 
 // This defines what the data looks like so TypeScript is happy
 interface AlumniData {
+  _id: string;
   name: string;
-  batch: string;
+  batch: number;
   department: string;
-  project: string;
+  testimonial: string;
   currentRole: string;
-  education: string;
-  quote: string;
-  highlight: string;
+  featured: boolean;
+  profileImage?: {
+    asset?: {
+      _ref: string;
+    };
+  };
 }
 
 const Alumni = () => {
@@ -29,15 +34,15 @@ const Alumni = () => {
     const fetchAlumni = async () => {
       try {
         const query = `*[_type == "alumni"]{
+          _id,
           name,
           batch,
           department,
-          project,
+          testimonial,
           currentRole,
-          education,
-          quote,
-          highlight
-        }`;
+          featured,
+          profileImage
+        } | order(batch desc)`;
 
         const data = await client.fetch(query);
         setAlumni(data);
@@ -118,17 +123,21 @@ const Alumni = () => {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {alumni.map((alum, index) => (
+              {alumni.map((alum) => (
                 <div
-                  key={index}
+                  key={alum._id}
                   className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-shadow"
                 >
                   <div className="bg-gradient-to-r from-primary to-emerald-700 p-6">
-                    <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-2xl mb-4">
-                      {alum.name?.charAt(0) || "A"}
+                    <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-2xl mb-4 overflow-hidden">
+                      {alum.profileImage?.asset ? (
+                        <img src={urlFor(alum.profileImage.asset)} alt={alum.name} className="w-full h-full object-cover" />
+                      ) : (
+                        alum.name?.charAt(0) || "A"
+                      )}
                     </div>
                     <h3 className="text-xl font-bold text-white">{alum.name}</h3>
-                    <p className="text-white/80 text-sm">{alum.batch}</p>
+                    <p className="text-white/80 text-sm">IWM Batch {alum.batch}</p>
                   </div>
 
                   <div className="p-6 space-y-4">
@@ -143,22 +152,14 @@ const Alumni = () => {
                     <div className="flex items-start gap-3">
                       <GraduationCap className="w-5 h-5 text-primary mt-0.5" />
                       <div>
-                        <p className="text-xs text-muted-foreground">Education</p>
-                        <p className="font-medium text-foreground">{alum.education}</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <Award className="w-5 h-5 text-emerald-500 mt-0.5" />
-                      <div>
-                        <p className="text-xs text-muted-foreground">IWM Highlight</p>
-                        <p className="text-sm text-foreground">{alum.highlight}</p>
+                        <p className="text-xs text-muted-foreground">Department</p>
+                        <p className="font-medium text-foreground">{alum.department}</p>
                       </div>
                     </div>
 
                     <div className="pt-4 border-t border-border">
                       <Quote className="w-6 h-6 text-primary/20 mb-2" />
-                      <p className="text-sm text-muted-foreground italic">"{alum.quote}"</p>
+                      <p className="text-sm text-muted-foreground italic">"{alum.testimonial}"</p>
                     </div>
                   </div>
                 </div>

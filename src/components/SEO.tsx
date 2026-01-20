@@ -12,9 +12,9 @@ interface SEOProps {
 export const SEO = ({
     title,
     description = "Join India's flagship civic internship program. Work with the Indore Municipal Corporation across 12 departments and gain hands-on experience in urban governance.",
-    keywords = "IWM, Internship with Mayor, Indore Municipal Corporation, civic internship, government internship, urban governance, Indore",
+    keywords = "IWM, iwm indore, Internship with Mayor, Indore Municipal Corporation, civic internship, government internship, Indore",
     image = "/iwm-logo.png",
-    url = "https://iwmindore.gov.in",
+    url = "https://iwmconnect.vercel.app",
     type = 'website'
 }: SEOProps) => {
     const siteTitle = "IWM Portal - Internship with Mayor, Indore";
@@ -25,11 +25,11 @@ export const SEO = ({
         "@context": "https://schema.org",
         "@type": "GovernmentOrganization",
         "name": "Indore Municipal Corporation",
-        "url": "https://iwmindore.gov.in",
-        "logo": "https://iwmindore.gov.in/iwm-logo.png",
+        "url": "https://iwmconnect.vercel.app",
+        "logo": "https://iwmconnect.vercel.app/iwm-logo.png",
         "sameAs": [
-            "https://www.facebook.com/IndoreMunicipalCorporation",
-            "https://twitter.com/IndoreMunicipal",
+            // "https://www.facebook.com/IndoreMunicipalCorporation",
+            // "https://twitter.com/IndoreMunicipal",
             "https://www.instagram.com/internshipwithmayor.indore/"
         ],
         "contactPoint": {
