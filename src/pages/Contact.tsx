@@ -98,7 +98,7 @@ const Contact = () => {
                       className={`group p-6 rounded-2xl bg-card border border-border transition-all duration-300 flex flex-col ${item.link ? 'cursor-pointer hover:-translate-y-1 hover:shadow-xl hover:border-emerald-500/50' : 'hover:shadow-lg'
                         }`}
                     >
-                      <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
                         <item.icon className="w-6 h-6" />
                       </div>
                       <h3 className="font-semibold text-lg text-foreground mb-2 group-hover:text-emerald-700 transition-colors">{item.title}</h3>

@@ -23,7 +23,7 @@ const galleryImages = [
     alt: "Team presentation session"
   },
   {
-    src: "https://res.cloudinary.com/dvneefjpi/image/upload/v1767773652/200_interns_enrolled_in_Intership_with_Mayor_IMC_departments_internshipwithmayorAccounts_Fi_ni6rrf.jpg",
+    src: "https://res.cloudinary.com/dvneefjpi/image/upload/v1768982089/IMG-20260114-WA0089_di3f2n.jpg",
     alt: "Group photo"
   },
   {

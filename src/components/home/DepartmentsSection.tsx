@@ -8,48 +8,48 @@ import {
 
 const departments = [
   {
-    name: "IT & e-Governance",
-    description: "Drive digital transformation and manage city-wide IT infrastructure."
-  },
-  {
-    name: "Revenue",
-    description: "Learn municipal finance, tax collection, and revenue management systems."
-  },
-  {
-    name: "Smart City",
-    description: "Work on cutting-edge urban projects and smart city solutions."
-  },
-  {
     name: "AICTSL",
     description: "Manage public transport operations like iBus and city buses."
-  },
-  {
-    name: "Public Works Department",
-    description: "Oversee infrastructure development, road construction, and city planning."
-  },
-  {
-    name: "Finance and Accounts Department",
-    description: "Handle municipal budgeting, accounting, and financial reporting."
-  },
-  {
-    name: "LAW Department",
-    description: "Assist in legal matters, policy drafting, and regulatory compliance."
-  },
-  {
-    name: "SBM",
-    description: "Contribute to Swachh Bharat Mission and waste management initiatives."
-  },
-  {
-    name: "PR & Journalism",
-    description: "Manage public relations, media communication, and civic updates."
   },
   {
     name: "Electricity",
     description: "Manage street lighting, electrical infrastructure, and energy efficiency initiatives."
   },
   {
+    name: "Finance and Accounts Department",
+    description: "Handle municipal budgeting, accounting, and financial reporting."
+  },
+  {
     name: "Garden",
     description: "Maintain city parks, green belts, and drive urban afforestation projects."
+  },
+  {
+    name: "IT & e-Governance",
+    description: "Drive digital transformation and manage city-wide IT infrastructure."
+  },
+  {
+    name: "LAW Department",
+    description: "Assist in legal matters, policy drafting, and regulatory compliance."
+  },
+  {
+    name: "PR & Journalism",
+    description: "Manage public relations, media communication, and civic updates."
+  }, 
+  {
+    name: "Public Works Department",
+    description: "Oversee infrastructure development, road construction, and city planning."
+  },
+  {
+    name: "Revenue",
+    description: "Learn municipal finance, tax collection, and revenue management systems."
+  },
+  {
+    name: "SBM",
+    description: "Contribute to Swachh Bharat Mission and waste management initiatives."
+  },
+  {
+    name: "Smart City",
+    description: "Work on cutting-edge urban projects and smart city solutions."
   },
   {
     name: "Workshop/Mechanical",
