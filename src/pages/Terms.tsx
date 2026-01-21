@@ -5,12 +5,12 @@ import { FileText } from "lucide-react";
 const Terms = () => {
   return (
     <PublicLayout>
-      <SEO
-        title="Terms of Service"
+      <SEO 
+        title="Terms of Service" 
         description="Terms of Service for Internship with Mayor (IWM), Indore Municipal Corporation"
         url="https://iwmindore.gov.in/terms"
       />
-
+      
       <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container max-w-4xl">
           <div className="bg-card rounded-2xl shadow-lg border border-border p-8 md:p-12">
