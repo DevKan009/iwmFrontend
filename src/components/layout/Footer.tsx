@@ -77,8 +77,8 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold text-foreground">Departments</h4>
             <nav className="flex flex-col gap-2">
-              <span className="text-sm text-muted-foreground">Urban Planning</span>
-              <span className="text-sm text-muted-foreground">Public Health</span>
+              <span className="text-sm text-muted-foreground">Revenue</span>
+              <span className="text-sm text-muted-foreground">AICTSL</span>
               <span className="text-sm text-muted-foreground">Smart City</span>
               <a
                 href="/#DepartmentsSection"
