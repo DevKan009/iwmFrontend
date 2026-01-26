@@ -5,24 +5,28 @@ import React, {
   isValidElement,
   ReactElement,
   ReactNode,
-  RefObject,
+  useImperativeHandle,
+  useState,
   useEffect,
-  useMemo,
-  useRef
+  useCallback
 } from 'react';
-import gsap from 'gsap';
+
+export interface CardSwapHandle {
+  bringToFront: (idx: number) => void;
+}
 
 export interface CardSwapProps {
   width?: number | string;
   height?: number | string;
-  cardDistance?: number;
-  verticalDistance?: number;
   delay?: number;
   pauseOnHover?: boolean;
   onCardClick?: (idx: number) => void;
-  skewAmount?: number;
-  easing?: 'linear' | 'elastic';
   children: ReactNode;
+  // Kept for compatibility but unused or simplified
+  cardDistance?: number;
+  verticalDistance?: number;
+  skewAmount?: number;
+  easing?: string;
 }
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -33,241 +37,129 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(({ customClass, ...res
   <div
     ref={ref}
     {...rest}
-    className={`absolute top-1/2 left-1/2 rounded-xl border border-white bg-black [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden] ${customClass ?? ''} ${rest.className ?? ''}`.trim()}
+    className={`absolute inset-0 rounded-xl bg-background border border-border overflow-hidden transition-all duration-500 ease-in-out ${customClass ?? ''} ${rest.className ?? ''}`.trim()}
   />
 ));
 Card.displayName = 'Card';
 
-type CardRef = RefObject<HTMLDivElement | null>;
-interface Slot {
-  x: number;
-  y: number;
-  z: number;
-  zIndex: number;
-}
-
-const makeSlot = (i: number, distX: number, distY: number, total: number): Slot => ({
-  x: i * distX,
-  y: -i * distY,
-  z: -i * distX * 1.5,
-  zIndex: total - i
-});
-
-const placeNow = (el: HTMLElement, slot: Slot, skew: number) =>
-  gsap.set(el, {
-    x: slot.x,
-    y: slot.y,
-    z: slot.z,
-    xPercent: -50,
-    yPercent: -50,
-    skewY: skew,
-    transformOrigin: 'center center',
-    zIndex: slot.zIndex,
-    force3D: true
-  });
-
-const CardSwap: React.FC<CardSwapProps> = ({
-  width = 500,
+const CardSwap = forwardRef<CardSwapHandle, CardSwapProps>(({
+  width = 600,
   height = 400,
-  cardDistance = 60,
-  verticalDistance = 70,
   delay = 5000,
-  pauseOnHover = false,
+  pauseOnHover = true,
   onCardClick,
-  skewAmount = 6,
-  easing = 'elastic',
   children
-}) => {
-  const config =
-    easing === 'elastic'
-      ? {
-          ease: 'elastic.out(0.6,0.9)',
-          durDrop: 2,
-          durMove: 2,
-          durReturn: 2,
-          promoteOverlap: 0.9,
-          returnDelay: 0.05
-        }
-      : {
-          ease: 'power1.inOut',
-          durDrop: 0.8,
-          durMove: 0.8,
-          durReturn: 0.8,
-          promoteOverlap: 0.45,
-          returnDelay: 0.2
-        };
+}, ref) => {
+  const childrenArray = React.Children.toArray(children);
+  const totalCards = childrenArray.length;
 
-  const childArr = useMemo(() => Children.toArray(children) as ReactElement<CardProps>[], [children]);
-  const refs = useMemo<CardRef[]>(() => childArr.map(() => React.createRef<HTMLDivElement>()), [childArr.length]);
+  // State to track the order of indices [0, 1, 2, 3, 4]
+  // Index 0 is front, Index 1 is behind it, etc.
+  const [order, setOrder] = useState<number[]>(
+    Array.from({ length: totalCards }, (_, i) => i)
+  );
 
-  const order = useRef<number[]>(Array.from({ length: childArr.length }, (_, i) => i));
+  const [isHovered, setIsHovered] = useState(false);
 
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const intervalRef = useRef<number>(0);
-  const container = useRef<HTMLDivElement>(null);
+  const bringToFront = useCallback((targetIndex: number) => {
+    setOrder((prevOrder) => {
+      // If already at front, do nothing
+      if (prevOrder[0] === targetIndex) return prevOrder;
 
-  const bringToFront = (clickedIdx: number) => {
-    const currentOrder = order.current;
-    const posInOrder = currentOrder.indexOf(clickedIdx);
-    
-    if (posInOrder === 0) return; // Already at front
-
-    // Stop any ongoing animation
-    tlRef.current?.kill();
-    clearInterval(intervalRef.current);
-
-    // Reorder: clicked card goes to front, others maintain their relative order
-    const newOrder = [clickedIdx, ...currentOrder.filter(idx => idx !== clickedIdx)];
-    
-    const tl = gsap.timeline();
-    tlRef.current = tl;
-
-    // Animate all cards to their new positions
-    newOrder.forEach((idx, newPos) => {
-      const el = refs[idx].current!;
-      const slot = makeSlot(newPos, cardDistance, verticalDistance, refs.length);
-      
-      tl.set(el, { zIndex: slot.zIndex }, 0);
-      tl.to(
-        el,
-        {
-          x: slot.x,
-          y: slot.y,
-          z: slot.z,
-          duration: 0.6,
-          ease: 'power2.out'
-        },
-        0
-      );
+      // Move target to front, keep others in relative order
+      const newOrder = [targetIndex, ...prevOrder.filter(i => i !== targetIndex)];
+      return newOrder;
     });
+  }, []);
 
-    tl.call(() => {
-      order.current = newOrder;
-      // Restart auto-swap
-      intervalRef.current = window.setInterval(swap, delay);
+  const nextCard = useCallback(() => {
+    setOrder((prevOrder) => {
+      const [first, ...rest] = prevOrder;
+      return [...rest, first];
     });
-  };
+  }, []);
 
-  const swap = () => {
-    if (order.current.length < 2) return;
-
-    const [front, ...rest] = order.current;
-    const elFront = refs[front].current!;
-    const tl = gsap.timeline();
-    tlRef.current = tl;
-
-    tl.to(elFront, {
-      y: '+=500',
-      duration: config.durDrop,
-      ease: config.ease
-    });
-
-    tl.addLabel('promote', `-=${config.durDrop * config.promoteOverlap}`);
-    rest.forEach((idx, i) => {
-      const el = refs[idx].current!;
-      const slot = makeSlot(i, cardDistance, verticalDistance, refs.length);
-      tl.set(el, { zIndex: slot.zIndex }, 'promote');
-      tl.to(
-        el,
-        {
-          x: slot.x,
-          y: slot.y,
-          z: slot.z,
-          duration: config.durMove,
-          ease: config.ease
-        },
-        `promote+=${i * 0.15}`
-      );
-    });
-
-    const backSlot = makeSlot(refs.length - 1, cardDistance, verticalDistance, refs.length);
-    tl.addLabel('return', `promote+=${config.durMove * config.returnDelay}`);
-    tl.call(
-      () => {
-        gsap.set(elFront, { zIndex: backSlot.zIndex });
-      },
-      undefined,
-      'return'
-    );
-    tl.to(
-      elFront,
-      {
-        x: backSlot.x,
-        y: backSlot.y,
-        z: backSlot.z,
-        duration: config.durReturn,
-        ease: config.ease
-      },
-      'return'
-    );
-
-    tl.call(() => {
-      order.current = [...rest, front];
-    });
-  };
+  useImperativeHandle(ref, () => ({
+    bringToFront
+  }));
 
   useEffect(() => {
-    const total = refs.length;
-    refs.forEach((r, i) => placeNow(r.current!, makeSlot(i, cardDistance, verticalDistance, total), skewAmount));
+    if (pauseOnHover && isHovered) return;
 
-    swap();
-    intervalRef.current = window.setInterval(swap, delay);
-
-    // Listen for custom event to bring card to front
-    const handleBringToFront = (e: CustomEvent) => {
-      bringToFront(e.detail);
-    };
-    window.addEventListener('bringCardToFront', handleBringToFront as EventListener);
-
-    if (pauseOnHover) {
-      const node = container.current!;
-      const pause = () => {
-        tlRef.current?.pause();
-        clearInterval(intervalRef.current);
-      };
-      const resume = () => {
-        tlRef.current?.play();
-        intervalRef.current = window.setInterval(swap, delay);
-      };
-      node.addEventListener('mouseenter', pause);
-      node.addEventListener('mouseleave', resume);
-      return () => {
-        node.removeEventListener('mouseenter', pause);
-        node.removeEventListener('mouseleave', resume);
-        window.removeEventListener('bringCardToFront', handleBringToFront as EventListener);
-        clearInterval(intervalRef.current);
-      };
-    }
-    return () => {
-      window.removeEventListener('bringCardToFront', handleBringToFront as EventListener);
-      clearInterval(intervalRef.current);
-    };
-  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
-
-  const rendered = childArr.map((child, i) =>
-    isValidElement<CardProps>(child)
-      ? cloneElement(child, {
-          key: i,
-          ref: refs[i],
-          style: { width, height, cursor: 'pointer', ...(child.props.style ?? {}) },
-          onClick: e => {
-            child.props.onClick?.(e as React.MouseEvent<HTMLDivElement>);
-            bringToFront(i);
-            onCardClick?.(i);
-          }
-        } as CardProps & React.RefAttributes<HTMLDivElement>)
-      : child
-  );
+    const interval = setInterval(nextCard, delay);
+    return () => clearInterval(interval);
+  }, [nextCard, delay, pauseOnHover, isHovered]);
 
   return (
     <div
-      ref={container}
-      className="absolute bottom-0 right-0 transform translate-x-[5%] translate-y-[20%] origin-bottom-right perspective-[900px] overflow-visible max-[768px]:translate-x-[25%] max-[768px]:translate-y-[25%] max-[768px]:scale-[0.75] max-[480px]:translate-x-[25%] max-[480px]:translate-y-[25%] max-[480px]:scale-[0.55]"
+      className="relative mx-auto mt-10 perspective-[1000px]"
       style={{ width, height }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {rendered}
+      {childrenArray.map((child, originalIndex) => {
+        // Find where this card is in the current stack order
+        const positionIndex = order.indexOf(originalIndex);
+
+        // Use position to determine styles
+        // Position 0 = Front
+        // Position 1 = Behind 1 step
+        // etc.
+
+        // Simple stacking logic
+        const xOffset = positionIndex * 15; // 15px right per step
+        const yOffset = positionIndex * 15; // 15px down per step
+        const scale = 1 - (positionIndex * 0.05); // Scale down 5% per step
+        const zIndex = totalCards - positionIndex;
+        const opacity = positionIndex > 3 ? 0 : 1; // Fade out cards deep in stack is optional, let's keep visible but maybe fading
+
+        // If it's the very last card moving to front (conceptually), we might want a different transition,
+        // but simple CSS transition works surprisingly well for the "shifting" stack effect.
+
+        const style: React.CSSProperties = {
+          zIndex,
+          transform: `translate3d(${xOffset}px, ${yOffset}px, -${positionIndex * 50}px) scale(${scale})`,
+          opacity: positionIndex > 4 ? 0 : 1, // Hide cards that are too far back
+          pointerEvents: positionIndex === 0 ? 'auto' : 'none', // Only interact with front card usually?
+          // Or allow clicking visible parts of back cards?
+          // Let's allow clicking back cards to bring them to front.
+        };
+
+        // If we want back cards to be clickable to bring to front:
+        const isClickable = true; // positionIndex !== 0; 
+        const pointerEvents = isClickable ? 'auto' : 'none';
+
+        if (!isValidElement(child)) return null;
+
+        return (
+          <div
+            key={originalIndex}
+            style={{
+              ...style,
+              pointerEvents,
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)'
+            }}
+            onClick={() => {
+              bringToFront(originalIndex);
+              onCardClick?.(originalIndex);
+            }}
+            className="cursor-pointer shadow-2xl rounded-2xl"
+          >
+            {/* Pass width/height to children if needed, but they are absolutely positioned now */}
+            {cloneElement(child as ReactElement<any>, {
+              // We can pass internal props if needed
+            })}
+          </div>
+        );
+      })}
     </div>
   );
-};
+});
 
+CardSwap.displayName = 'CardSwap';
 export default CardSwap;

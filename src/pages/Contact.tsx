@@ -30,7 +30,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["+91 88396 35194", "+91 98263 32221"],
+    details: ["+91 88396 35194", "+91 7440445051"],
     link: "tel:+918839635194",
   },
   {

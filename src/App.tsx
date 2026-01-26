@@ -28,7 +28,7 @@ const App = () => (
           <Route path="/alumni" element={<Alumni />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="/Developer" element={<Developer />} />
+          <Route path="/developer" element={<Developer />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

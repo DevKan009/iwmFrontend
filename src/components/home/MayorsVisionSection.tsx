@@ -1,4 +1,6 @@
 
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+
 export function MayorsVisionSection() {
     return (
         <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden relative">
@@ -30,6 +32,48 @@ export function MayorsVisionSection() {
                             <div>
                                 <h3 className="text-2xl font-bold text-white">Shri Pushyamitra Bhargav</h3>
                                 <p className="text-emerald-400 font-medium tracking-wide">Mayor, Indore Municipal Corporation</p>
+
+                                {/* Social Media Links */}
+                                <div className="flex items-center gap-4 mt-3">
+                                    <a
+                                        href="https://www.instagram.com/advpushyamitra/?hl=en"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/60 hover:text-[#E1306C] transition-colors duration-300"
+                                        aria-label="Instagram"
+                                    >
+                                        <Instagram className="w-5 h-5" />
+                                    </a>
+                                    <a
+                                        href="https://www.facebook.com/advpushyamitra/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/60 hover:text-[#1877F2] transition-colors duration-300"
+                                        aria-label="Facebook"
+                                    >
+                                        <Facebook className="w-5 h-5" />
+                                    </a>
+                                    <a
+                                        href="https://twitter.com/advpushyamitra"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/60 hover:text-white transition-colors duration-300"
+                                        aria-label="X (Twitter)"
+                                    >
+                                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                        </svg>
+                                    </a>
+                                    <a
+                                        href="https://www.linkedin.com/in/pushyamitra-bhargav-1987331b2/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/60 hover:text-[#0077B5] transition-colors duration-300"
+                                        aria-label="LinkedIn"
+                                    >
+                                        <Linkedin className="w-5 h-5" />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -59,6 +103,6 @@ export function MayorsVisionSection() {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }

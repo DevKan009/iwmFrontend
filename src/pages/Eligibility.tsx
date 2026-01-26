@@ -19,7 +19,7 @@ const eligibilityCriteria = [
   {
     icon: GraduationCap,
     title: "Educational Qualification",
-    text: "The applicant must have obtained a diploma, graduation, post-graduation, or any other higher qualification from a recognized university."
+    text: "The applicant must have passed Class 12 or obtained a diploma, graduation, post-graduation, or any other higher qualification from a recognized university."
   },
   {
     icon: Clock,
@@ -116,12 +116,12 @@ const Eligibility = () => {
             {eligibilityCriteria.map((item, index) => (
               <div
                 key={index}
-                className="group p-6 rounded-2xl bg-card border border-border hover:border-emerald-500/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                className="group p-6 rounded-2xl bg-card border border-border hover:border-emerald-500/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full"
               >
                 {/* Decorative gradient blob */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-emerald-500/10 transition-colors" />
 
-                <div className="flex items-start gap-4 relatie z-10">
+                <div className="flex items-start gap-4 relative z-10">
                   <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
                     <item.icon className="w-6 h-6" />
                   </div>
